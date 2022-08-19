@@ -37,11 +37,45 @@ public class ColorBukkitAPI {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta bookMeta = (BookMeta) book.getItemMeta();
         
+        bookMeta.spigot().addPage(generatePage(hue));
+        for(int i = 0; i < 50; i++) {
+            bookMeta.spigot().addPage(generatePage((float) i/50));
+        }
+
+        //set the title and author of this book
+        bookMeta.setTitle("ColorBukkit");
+        bookMeta.setAuthor("Thorinwasher");
+        
+        //update the ItemStack with this new meta
+        book.setItemMeta(bookMeta);
+        
+        user.openBook(book);
+        ColorBukkit.instance.putIntoQueue(user,consumer);
+    }
+    
+    /**
+     * Generate one page
+     * @param hue <p> The hue used for the s-b plot within the page</p>
+     * @return <p> A page </p>
+     */
+    private static BaseComponent[] generatePage(float hue) {
+        int maxHeight = 12;
+        int maxWidth = 12;
         ComponentBuilder builder = new ComponentBuilder();
         
-        int maxHeight = 13;
-        int maxWidth = 12;
-        
+        compileSBPlot(builder,maxHeight,maxWidth,hue);
+        compileHueBar(builder, hue);
+        return builder.create();
+    }
+    
+    /**
+     * Compile the plot with saturation and brightness
+     * @param builder <p> A component builder used to build one page</p>
+     * @param maxHeight <p> height of the plot</p>
+     * @param maxWidth <p> width of the plot </p>
+     * @param hue <p> The hue to use for the saturation-brightness plot</p>
+     */
+    private static void compileSBPlot(ComponentBuilder builder, int maxHeight, int maxWidth, float hue) {
         for(int iHeight = 0; iHeight < maxHeight; iHeight++) {
             for(int iWidth = 0; iWidth < 12; iWidth++) {
                 float brightness = (float) iHeight/(maxHeight-1);
@@ -54,26 +88,23 @@ public class ColorBukkitAPI {
             }
             builder.append("\n");
         }
-        
-        for(int i = 0; i < 54; i++) {
-            float barHue = (float) i/(54-1);
+    }
+    
+    /**
+     * Compile the bar displaying all possible hue types
+     * @param builder <p> A component builder used to build one page</p>
+     * @param hue <p> The current hue in use</p>
+     */
+    private static void compileHueBar(ComponentBuilder builder, float hue) {
+        float step = (float) 1/360;
+        int barLength = 50;
+        builder.append("<").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + (hue-step))).color(ChatColor.BLACK);
+        for(int i = 0; i < barLength; i++) {
+            float barHue = (float) i/(barLength-1);
             builder.append("|");
-            builder.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + barHue));
+            builder.event(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, String.valueOf(i+1)));
             builder.color(ColorUtil.fromColorToChatColor(Color.getHSBColor(barHue, 1, 1)));
         }
-        
-        BaseComponent[] page = builder.create();
-        //add the page to the meta
-        bookMeta.spigot().addPage(page);
-
-        //set the title and author of this book
-        bookMeta.setTitle("ColorBukkit");
-        bookMeta.setAuthor("Thorinwasher");
-        
-        //update the ItemStack with this new meta
-        book.setItemMeta(bookMeta);
-        
-        user.openBook(book);
-        ColorBukkit.instance.putIntoQueue(user,consumer);
+        builder.append(">").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + (hue+step))).color(ChatColor.BLACK);
     }
 }

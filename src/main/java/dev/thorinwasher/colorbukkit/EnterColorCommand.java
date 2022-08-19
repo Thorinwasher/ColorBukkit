@@ -11,6 +11,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class EnterColorCommand implements CommandExecutor{
 
+    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         try {
             Consumer<ChatColor> consumer = ColorBukkit.instance.getFromQueue((Player) sender);
