@@ -16,6 +16,15 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class ColorBukkitAPI {
     
+    /**
+     * Note that we are limited both in the number of pages we can generate, and what fits within one line
+     * 
+     * <p>
+     * When I tested this, we are limited to approximately 54 pages before the book gets too large, and 50 "|"
+     * approximately fits within a line when <> is included
+     * </p>
+     */
+    static final int HUE_BAR_LENGTH = 50;
     
     /**
      * Opens a book color menu for specified user
@@ -38,8 +47,8 @@ public class ColorBukkitAPI {
         BookMeta bookMeta = (BookMeta) book.getItemMeta();
         
         bookMeta.spigot().addPage(generatePage(hue));
-        for(int i = 0; i < 50; i++) {
-            bookMeta.spigot().addPage(generatePage((float) i/50));
+        for(int i = 0; i < HUE_BAR_LENGTH; i++) {
+            bookMeta.spigot().addPage(generatePage((float) i/(HUE_BAR_LENGTH)));
         }
 
         //set the title and author of this book
@@ -55,7 +64,7 @@ public class ColorBukkitAPI {
     
     /**
      * Generate one page
-     * @param hue <p> The hue used for the s-b plot within the page</p>
+     * @param hue <p> The hue used for the s-b plot within the page </p>
      * @return <p> A page </p>
      */
     private static BaseComponent[] generatePage(float hue) {
@@ -78,7 +87,7 @@ public class ColorBukkitAPI {
     private static void compileSBPlot(ComponentBuilder builder, int maxHeight, int maxWidth, float hue) {
         for(int iHeight = 0; iHeight < maxHeight; iHeight++) {
             for(int iWidth = 0; iWidth < 12; iWidth++) {
-                float brightness = (float) iHeight/(maxHeight-1);
+                float brightness = (float) (iHeight+1)/(maxHeight);//skip the first row as it's just black 
                 float saturation = (float) iWidth/(maxWidth-1);
                 Color javaColor = Color.getHSBColor(hue,saturation,brightness);
                 ChatColor color = ColorUtil.fromColorToChatColor(javaColor);
@@ -97,14 +106,13 @@ public class ColorBukkitAPI {
      */
     private static void compileHueBar(ComponentBuilder builder, float hue) {
         float step = (float) 1/360;
-        int barLength = 50;
-        builder.append("<").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + (hue-step))).color(ChatColor.BLACK);
-        for(int i = 0; i < barLength; i++) {
-            float barHue = (float) i/(barLength-1);
+        builder.append("\u25C0").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + (hue-step))).color(ChatColor.BLACK);
+        for(int i = 0; i < HUE_BAR_LENGTH; i++) {
+            float barHue = (float) i/(HUE_BAR_LENGTH);
             builder.append("|");
-            builder.event(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, String.valueOf(i+1)));
+            builder.event(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, String.valueOf(i+2)));
             builder.color(ColorUtil.fromColorToChatColor(Color.getHSBColor(barHue, 1, 1)));
         }
-        builder.append(">").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + (hue+step))).color(ChatColor.BLACK);
+        builder.append("\u25B6").event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cw hue " + (hue+step))).color(ChatColor.BLACK);
     }
 }

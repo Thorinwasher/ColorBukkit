@@ -37,7 +37,7 @@ public class ColorBukkit extends JavaPlugin implements Listener{
         switch(command.getName()) {
         case "testing":
             ColorBukkitAPI.getColorFromUser((Player)commandSender, (color) -> {
-                Bukkit.getLogger().log(Level.INFO,"ping " + color.getName());
+                commandSender.sendMessage("[NOT PART OF API] The color you chose was " + color.getName());
             });
             return true;
         case "cw":
