@@ -6,7 +6,7 @@ It can also be used as a colorpicker by itself
 ## How to use
 Have the plugin in the plugins repository, then you're up and ready.
 
-_PAPER IS REQUIRED FOR THIS TO WORK_
+<b>PAPER IS REQUIRED FOR THIS TO WORK </b>
 ### The colorbuckit command
 Write `colorbuckit` and you will get a colorpicker pop up
 ## The API
