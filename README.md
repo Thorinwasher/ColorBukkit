@@ -7,8 +7,8 @@ It can also be used as a colorpicker by itself
 Have the plugin in the plugins repository, then you're up and ready.
 
 <b>PAPER IS REQUIRED FOR THIS TO WORK </b>
-### The colorbuckit command
-Write `colorbuckit` and you will get a colorpicker pop up
+### The ColorBukkit command
+Write `colorbukkit` and you will get a colorpicker pop up
 ## The API
 Get a chatcolor and print it to console. The user will get a book gui popup letting you pick a color
 ```java
