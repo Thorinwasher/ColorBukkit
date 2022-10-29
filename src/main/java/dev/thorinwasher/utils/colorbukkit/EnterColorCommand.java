@@ -1,4 +1,4 @@
-package dev.thorinwasher.colorbukkit;
+package dev.thorinwasher.utils.colorbukkit;
 
 import java.util.function.Consumer;
 

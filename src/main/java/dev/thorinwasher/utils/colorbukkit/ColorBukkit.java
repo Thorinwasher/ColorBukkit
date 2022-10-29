@@ -1,4 +1,4 @@
-package dev.thorinwasher.colorbukkit;
+package dev.thorinwasher.utils.colorbukkit;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-import dev.thorinwasher.colorbukkit.utils.TextCompiler;
+import dev.thorinwasher.utils.colorbukkit.utils.TextCompiler;
 import net.md_5.bungee.api.ChatColor;
 
 public class ColorBukkit extends JavaPlugin implements Listener{

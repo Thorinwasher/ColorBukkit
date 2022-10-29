@@ -1,4 +1,4 @@
-package dev.thorinwasher.colorbukkit.utils;
+package dev.thorinwasher.utils.colorbukkit.utils;
 
 import java.awt.Color;
 

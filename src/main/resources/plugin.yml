@@ -3,7 +3,7 @@ api-version: 1.17
 version: "0.0.1-SNAPSHOT"
 description: A plugin which allows for an in game color selection.
 author: Thorinwasher
-main: dev.thorinwasher.colorbukkit.ColorBukkit
+main: dev.thorinwasher.utils.colorbukkit.ColorBukkit
 commands: 
   colorbukkit:
     description: Used to get a color hexcode.

@@ -1,4 +1,4 @@
-package dev.thorinwasher.colorbukkit;
+package dev.thorinwasher.utils.colorbukkit;
 
 import java.awt.Color;
 import java.util.function.Consumer;
@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-import dev.thorinwasher.colorbukkit.utils.ColorUtil;
-import dev.thorinwasher.colorbukkit.utils.TextCompiler;
+import dev.thorinwasher.utils.colorbukkit.utils.ColorUtil;
+import dev.thorinwasher.utils.colorbukkit.utils.TextCompiler;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
