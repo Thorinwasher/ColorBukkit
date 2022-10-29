@@ -9,3 +9,7 @@ commands:
     description: Used to get a color hexcode.
   cw:
     description: Used internally.
+permissions:
+   colorbukkit:
+     default: false
+     description: Display a collorpicker gui, after selection display the selected color in chat

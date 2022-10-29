@@ -37,9 +37,11 @@ public class ColorBukkit extends JavaPlugin implements Listener{
         
         switch(command.getName()) {
         case "colorbukkit":
-            ColorBukkitAPI.getColorFromUser((Player)commandSender, (color) -> {
-                commandSender.sendMessage(TextCompiler.compileMessage(" The color you chose was " + color + color.getName()));
-            });
+            if(commandSender.hasPermission("colorbukkit")) {
+                ColorBukkitAPI.getColorFromUser((Player)commandSender, (color) -> {
+                    commandSender.sendMessage(TextCompiler.compileMessage(" The color you chose was " + color + color.getName()));
+                });
+            }
             return true;
         case "cw":
             return new EnterColorCommand().onCommand(commandSender, command, s, args);
