@@ -33,7 +33,7 @@ public class TextCompiler {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < prefix.length(); i++) {
             float hue = (float) i / (prefix.length() -1 );
-            Color color = Color.getHSBColor(hue, 1f, 1f);
+            Color color = Color.getHSBColor(hue, 0.6f, 1f);
             builder.append(ColorUtil.fromColorToChatColor(color)+String.valueOf(prefix.charAt(i)));
         }
         builder.append(ChatColor.WHITE + unformatedMessage);
