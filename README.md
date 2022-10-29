@@ -4,7 +4,7 @@ It can also be used as a colorpicker by itself
 
 # Instructions
 ## How to use
-Have the plugin in the plugins repository, then you're up and ready.
+Have the plugin in the plugins repository for your server, then you're up and ready.
 
 <b>PAPER IS REQUIRED FOR THIS TO WORK </b>
 ### The ColorBukkit command
