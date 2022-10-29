@@ -5,7 +5,7 @@ description: A plugin which allows for an in game color selection.
 author: Thorinwasher
 main: dev.thorinwasher.colorbukkit.ColorBukkit
 commands: 
-  testing:
-    description: Used to test the plugin.
+  colorbukkit:
+    description: Used to get a color hexcode.
   cw:
-    description: Used internally
+    description: Used internally.

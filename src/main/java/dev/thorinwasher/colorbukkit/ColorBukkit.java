@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+import dev.thorinwasher.colorbukkit.utils.TextCompiler;
 import net.md_5.bungee.api.ChatColor;
 
 public class ColorBukkit extends JavaPlugin implements Listener{
@@ -35,9 +36,9 @@ public class ColorBukkit extends JavaPlugin implements Listener{
         }
         
         switch(command.getName()) {
-        case "testing":
+        case "colorbukkit":
             ColorBukkitAPI.getColorFromUser((Player)commandSender, (color) -> {
-                commandSender.sendMessage("[NOT PART OF API] The color you chose was " + color.getName());
+                commandSender.sendMessage(TextCompiler.compileMessage(" The color you chose was " + color + color.getName()));
             });
             return true;
         case "cw":
@@ -51,7 +52,7 @@ public class ColorBukkit extends JavaPlugin implements Listener{
      * Registers commands for this plugin
      */
     private void registerCommands() {
-        String[] commands = new String[] {"testing", "cw"};
+        String[] commands = new String[] {"colorbukkit", "cw"};
         
         for (String command : commands) {
             PluginCommand stargateCommand = this.getCommand(command);
