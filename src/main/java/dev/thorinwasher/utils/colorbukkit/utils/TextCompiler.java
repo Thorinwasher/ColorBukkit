@@ -18,7 +18,7 @@ public class TextCompiler {
      * 
      * <p>
      * When I tested this, we are limited to approximately 54 pages before the book gets too large, and 50 "|"
-     * approximately fits within a line when &gt &lt is included
+     * approximately fits within a line when &ly; &gt; is included
      * </p>
      */
     public static final int HUE_BAR_LENGTH = 50;
