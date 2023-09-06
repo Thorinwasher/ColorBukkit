@@ -64,6 +64,11 @@ public class ColorBukkit extends JavaPlugin implements Listener{
         }
     }
 
+    /**
+     *
+     * @param user
+     * @param consumer
+     */
     public void putIntoQueue(Player user, Consumer<ChatColor> consumer) {
         if(user == null) {
             return;
@@ -72,6 +77,11 @@ public class ColorBukkit extends JavaPlugin implements Listener{
         
     }
 
+    /**
+     *
+     * @param sender
+     * @return
+     */
     public Consumer<ChatColor> getFromQueue(Player sender) {
         return queue.remove(sender);
     }
