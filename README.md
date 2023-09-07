@@ -1,15 +1,20 @@
 # Description
-ColorBukkit is a colorpicker, primarily meant to be used as an API for paper plugins. 
-It can also be used as a colorpicker by itself
+A library for plugins to request hex colors from users using an intuitive, book-based, in-game selection interface. This is solely meant to be used as an library for other plugins.
 
 # Instructions
 ## How to use
 Have the plugin in the plugins repository for your server, then you're up and ready.
 
 <b>PAPER IS REQUIRED FOR THIS TO WORK </b>
-### The ColorBukkit command
-Write `/colorbukkit` and you will get a colorpicker pop up. Note that this does not work from console
 ## The API
+Maven (note that before compilation, you have to install the plugin locally):
+```xml
+<dependency>
+  <groupId>dev.thorinwasher.utils</groupId>
+  <artifactId>colorbukkit</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
 Get a chatcolor and print it to console. The user will get a book gui popup letting you pick a color
 ```java
 ColorBukkitAPI.getColorFromUser(user, (color) - > {
