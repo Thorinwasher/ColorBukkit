@@ -3,6 +3,7 @@ package dev.thorinwasher.utils.colorbukkit;
 import java.awt.Color;
 import java.util.function.Consumer;
 
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -36,5 +37,26 @@ public class ColorBukkitAPI {
         ItemStack book = TextCompiler.generateBook(hue);
         user.openBook(book);
         ColorBukkit.instance.putIntoQueue(user,consumer);
+    }
+
+    /**
+     * Opens a book color menu for specified user
+     * @param user <p> The user that should open the menu </p>
+     * @param consumer <p> What to execute with the resulting chosen color </p>
+     */
+    public static void getColor(Player user, Consumer<TextColor> consumer) {
+        getColorFromUser(user,0f,chatColor -> consumer.accept(ColorUtil.fromChatColor(chatColor)));
+    }
+
+    /**
+     * Opens a book color menu for specified user with specific hue
+     * @param user <p> The user that should open the menu </p>
+     * @param hue <p> a value between 0 and 1 specifying a hue</p>
+     * @param consumer <p> What to execute with the resulting chosen color </p>
+     */
+    public static void getColor(Player user, float hue, Consumer<TextColor> consumer) {
+        ItemStack book = TextCompiler.generateBook(hue);
+        user.openBook(book);
+        ColorBukkit.instance.putIntoQueue(user,chatColor ->consumer.accept(ColorUtil.fromChatColor(chatColor)));
     }
 }
