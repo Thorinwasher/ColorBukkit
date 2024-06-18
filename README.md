@@ -12,7 +12,7 @@ Maven (note that before compilation, you have to install the plugin locally):
 <dependency>
   <groupId>dev.thorinwasher.utils</groupId>
   <artifactId>colorbukkit</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
 </dependency>
 ```
 Get a chatcolor and print it to console. The user will get a book gui popup letting you pick a color
